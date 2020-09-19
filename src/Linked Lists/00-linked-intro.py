@@ -15,7 +15,8 @@
 
 # First we define a class Node which will act as a blueprint for each of our nodes
 class Node():
-    def __init__(self, data):  # When instantiating a Node, we will pass the data/value we want the node to hold
+    # When instantiating a Node, we will pass the data/value we want the node to hold
+    def __init__(self, data):
         self.data = data  # The data passed during instantiation will be stored in self.data
         # This self.next will act as a pointer to the next node in the list. When creating a new node, it always points to null(or None).
         self.next = None
@@ -42,7 +43,7 @@ class LinkedList():
         new_node = Node(data)
         if self.head == None:
             self.head = new_node
-            self.tail = self.head # or new_node
+            self.tail = self.head  # or new_node
             self.length = 1
         else:
             self.tail.next = new_node
@@ -187,35 +188,34 @@ class LinkedList():
             self.tail = current_node
         return
 
-
     # Remove all elements from a linked list of integers that have value val.
 
     # Example:
     # Input:  1->2->6->3->4->5->6, val = 6
     # Output: 1->2->3->4->5
-    def removeElements(self, data): 
+    def removeElements(self, data):
         while self.head != None and self.head.data == data:
-                self.head = self.head.next
+            self.head = self.head.next
         current_node = self.head
         while current_node != None and current_node.next != None:
             if current_node.next.data == data:
                 current_node.next = current_node.next.next
             else:
-                current_node= current_node.next             
+                current_node = current_node.next
         return self.head
 
-# Write a function to delete a node in a singly-linked list. 
-# You will not be given access to the head of the list, 
+# Write a function to delete a node in a singly-linked list.
+# You will not be given access to the head of the list,
 # instead you will be given access to the node to be deleted directly.
 # It is guaranteed that the node to be deleted is not a tail node in the list.
 # Input: head = [4,5,1,9], node = 5
 # Output: [4,1,9]
 # Explanation: You are given the second node with value 5,
 #  the linked list should become 4 -> 1 -> 9 after calling your function.
-    def deleteNode(self, current_node):
-        current_node = self.head
-        current_node.data = current_node.next.data
-        current_node.next = current_node.next.next
+    # def deleteNode(self,node):
+    #     node.data =node.next.data
+    #     node.next =node.next.next
+
 
 # We will import this file while reversing a linked list. So we must make sure that it runs only
 # when it is the main file being run and not also when it is being imported in some other file.
@@ -267,18 +267,17 @@ if __name__ == '__main__':
 # 5 7 9
     print(my_linked_list.length)
 # 3
-    my_linked_list.insert(0,6)
-# 6 5 7 9 
-    my_linked_list.insert(1,6)
-# 6 6 5 7 9 
-    my_linked_list.insert(2,6)
-# 6 6 6 5 7 9 
+    my_linked_list.insert(0, 6)
+# 6 5 7 9
+    my_linked_list.insert(1, 6)
+# 6 6 5 7 9
+    my_linked_list.insert(2, 6)
+# 6 6 6 5 7 9
     my_linked_list.print_list()
-# 6 6 6 5 7 9    
+# 6 6 6 5 7 9
     my_linked_list.removeElements(6)
     my_linked_list.print_list()
-# 5 7 9   
-    my_linked_list.deleteNode(5)
-    my_linked_list.print_list()
-#  7 9   
-
+# 5 7 9
+    # my_linked_list.deleteNode(5)
+    # my_linked_list.print_list()
+#  7 9
